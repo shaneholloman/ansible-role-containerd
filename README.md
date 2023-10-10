@@ -1,6 +1,6 @@
 # Ansible Role: Containerd
 
-[![CI](https://github.com/shaneholloman-org/ansible-role-containerd/actions/workflows/ci.yml/badge.svg)](https://github.com/shaneholloman-org/ansible-role-containerd/actions/workflows/ci.yml)
+[![CI](https://github.com/shaneholloman/ansible-role-containerd/actions/workflows/ci.yml/badge.svg)](https://github.com/shaneholloman/ansible-role-containerd/actions/workflows/ci.yml)
 
 An Ansible Role that installs [containerd](https://containerd.io) on Linux.
 
@@ -36,7 +36,7 @@ Set systemd as cgroup driver in config.toml. Only valid with `containerd_config_
     docker_apt_ignore_key_error: true
     docker_apt_gpg_key: https://download.docker.com/linux/{{ ansible_distribution | lower }}/gpg
 
-Apt installation paramemeters, useful if you want to switch from the stable channel releases, or install on a different CPU architecture (e.g. `arm64`).
+Apt installation parameters, useful if you want to switch from the stable channel releases, or install on a different CPU architecture (e.g. `arm64`).
 
     docker_yum_repo_url: https://download.docker.com/linux/{{ (ansible_distribution == "Fedora") | ternary("fedora","centos") }}/docker-ce.repo
     docker_yum_repo_enable_nightly: '0'
@@ -63,4 +63,3 @@ MIT / BSD
 ## Author Information
 
 This role was created in 2023
-

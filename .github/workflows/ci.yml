@@ -45,7 +45,7 @@ jobs:
           - rockylinux8
           - ubuntu2004
           - debian11
-          - fedora35
+          - fedora38
 
     steps:
       - name: Check out the codebase.
