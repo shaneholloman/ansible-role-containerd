@@ -14,12 +14,9 @@ galaxy_info:
         - all
     - name: Debian
       versions:
-        - stretch
-        - buster
+        - bullseye
     - name: Ubuntu
       versions:
-        - xenial
-        - bionic
         - focal
   galaxy_tags:
     - system
