@@ -1,0 +1,40 @@
+---
+- name: Ensure dependencies are installed.
+  ansible.builtin.apt:
+    name:
+      - apt-transport-https
+      - ca-certificates
+      - gnupg2
+    state: present
+
+- name: Add Docker apt key.
+  ansible.builtin.apt_key:
+    url: "{{ docker_apt_gpg_key }}"
+    id: 9DC858229FC7DD38854AE2D88D81803C0EBFCD88
+    state: present
+  register: add_repository_key
+  ignore_errors: "{{ docker_apt_ignore_key_error }}"
+
+- name: Ensure curl is present (on older systems without SNI).
+  ansible.builtin.package:
+    name: curl
+    state: present
+  when: add_repository_key is failed
+
+- name: Add Docker apt key (alternative for older systems without SNI).
+  ansible.builtin.get_url:
+    url: "{{ docker_apt_gpg_key }}"
+    dest: "/tmp/docker_apt_gpg_key"
+    mode: '0644'
+  when: add_repository_key is failed
+
+- name: Add the downloaded key
+  ansible.builtin.apt_key:
+    file: "/tmp/docker_apt_gpg_key"
+  when: add_repository_key is failed
+
+- name: Add Docker repository.
+  ansible.builtin.apt_repository:
+    repo: "{{ docker_apt_repository }}"
+    state: present
+    update_cache: true
