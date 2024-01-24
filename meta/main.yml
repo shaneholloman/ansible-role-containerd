@@ -1,13 +1,12 @@
 ---
-dependencies: []
-
 galaxy_info:
   role_name: containerd
   author: shaneholloman
   description: containerd.io for Linux.
   company: "shaneholloman"
-  license: "license (BSD, MIT)"
-  min_ansible_version: "2.10"
+  license: "license (Unlicense)"
+  min_ansible_version: "2.12"
+
   platforms:
     - name: Fedora
       versions:
@@ -18,6 +17,7 @@ galaxy_info:
     - name: Ubuntu
       versions:
         - focal
+
   galaxy_tags:
     - system
     - containers
@@ -26,3 +26,5 @@ galaxy_info:
     - kubernetes
     - orchestration
     - server
+
+dependencies: []
