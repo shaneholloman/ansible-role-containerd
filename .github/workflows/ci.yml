@@ -7,14 +7,13 @@ name: CI
     branches:
       - main
   schedule:
-    - cron: "0 7 * * 0"
+    - cron: '0 7 * * 0'
 
 defaults:
   run:
     working-directory: 'shaneholloman.containerd'
 
 jobs:
-
   lint:
     name: Lint
     runs-on: ubuntu-latest
